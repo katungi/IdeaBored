@@ -3,7 +3,7 @@ class CreateIdeas < ActiveRecord::Migration[6.0]
     create_table :ideas do |t|
       t.string :title
       t.text :description
-      t.enum :priority
+      t.integer :priority
 
       t.timestamps
     end
