@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.text_field :priority %>
+    <%= form.select :priority, options_for_select(Idea.priorities)%>
   </div>
 
   <div class="actions">
