@@ -54,39 +54,21 @@
 
   <tbody>
     <% @ideas.each do |idea| %>
-
-    <div class="container">
-    <div class="row">
-      <div class="col">
-        <%=idea.title%>
-      </div>
-      <div class="col">
-        <%=idea.description%>
-      </div>
-      <div class="col">
-        <%=idea.priority%>
-      </div>
-      <div class="col">
-      <%= link_to 'Show', new_idea_path %>
-
-
-      </div>
-<div class="col">
-      <%= link_to 'Edit', edit_idea_path(idea)  %>
-
-
-      </div>
-
-
-<div class="col">
-      <%=link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }  %>
-
-
-      </div>
-    </div>
+      <tr>
+        <td><%= idea.title %></td>
+        <td><%= idea.description %></td>
+        <td><%= idea.priority %></td>
+        <td><%= link_to 'Show', idea %></td>
+        <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
+        <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+  <div class="card-header"><%= idea.title %></div>
+  <div class="card-body">
+    <h5 class="card-title">priority: <%= idea.priority %></h5>
+    <p class="card-text"><%= idea.description %></p>
   </div>
-      
-        
+</div>
     <% end %>
   </tbody>
 </table>
