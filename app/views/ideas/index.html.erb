@@ -9,16 +9,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div class="row align-content-sm-center">
 <%= link_to 'New Idea', new_idea_path , :class => " btn btn-success"%>
-  </div>
+
 <br>
 
-<% @ideas.each do |idea| %>
+<div class="row row-cols-3 row-cols-md-3">
 
-   <div class="row row-cols-3 row-cols-md-3">
-     <div class="col mb-4">
-       <div class="card h-100">
+<% @ideas.each do |idea| %>
+  <div class="col mb-4">
+    <div class="card h-100">
          <!--Card image-->
          <% if idea.priority == "high" %>
            <div class=" card-header view overlay bg-danger" style="align-content: center; padding: 10px; color: #EFEFEF; ">
@@ -42,18 +41,15 @@
            <!--Text-->
            <p class="card-text"><%= idea.description %></p>
            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-           <button type="button" class="btn btn-light-blue btn-md"><%= link_to 'Dump Idea',idea, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger "%></button>
 
          </div>
          <!-- Card -->
          </div>
        </div>
-     </div>
+  <% end %>
+    </div>
      </div>
    </div>
-
-
-<% end %>
 
 
 

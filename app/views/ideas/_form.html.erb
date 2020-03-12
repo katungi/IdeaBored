@@ -1,10 +1,10 @@
-<%= form_with(model: idea, local: true) do |form| %>
-  <% if idea.errors.any? %>
+<%= form_with(model: @idea, local: true) do |form| %>
+  <% if @idea.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+      <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
 
       <ul>
-        <% idea.errors.full_messages.each do |message| %>
+        <% @idea.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -12,20 +12,15 @@
   <% end %>
 
   <div class="field">
+
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.rich_text_area :description%>
   </div>
-
-  <div class="field">
-    <%= form.label :priority %>
-    <%= form.select :priority, options_for_select(Idea.priorities)%>
-  </div>
-  
   <%= form.hidden_field :user_id %> 
 
   <div class="actions">
