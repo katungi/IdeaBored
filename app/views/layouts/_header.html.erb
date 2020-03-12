@@ -1,2 +1,19 @@
-<%= link_to  'Sign up' ,  '/users/sign_up'%>
-<%= link_to  'Sign up' ,  '/users/sign_in'%>
+
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Sign up</h4>
+      <%= link_to  'Sign up' ,  new_user_registration_path,  :class => " btn btn-success"%>
+    </div>
+
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Log in</h4>
+      <%= link_to  'Log in' ,  user_session_path,  :class => " btn btn-success"%>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>

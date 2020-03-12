@@ -25,6 +25,8 @@
     <%= form.label :priority %>
     <%= form.select :priority, options_for_select(Idea.priorities)%>
   </div>
+  
+  <%= form.hidden_field :user_id %> 
 
   <div class="actions">
     <%= form.submit %>

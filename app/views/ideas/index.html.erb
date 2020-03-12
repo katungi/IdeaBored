@@ -9,68 +9,52 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<nav class="navbar navbar-dark navbar-static-top navbar-expand-md bg-dark">
-    <div class="container">
-       
-        <div >
-            <ul class="nav navbar-nav mr-auto">
-            <li class='nav-item'>Ideas</li>
-            
-
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container">
-<%= link_to 'New Idea', new_idea_path %>
-</div>
+  <div class="row align-content-sm-center">
+<%= link_to 'New Idea', new_idea_path , :class => " btn btn-success"%>
+  </div>
 <br>
-<table>
-  <thead>
-    <div class="container">
-    <div class="row">
-      <div class="col">
-        Title
-      </div>
-      <div class="col">
-        Description
-      </div>
-      <div class="col">
-        Priority
-      </div>
-      <div class="col">
-      </div>
-       <div class="col">
-      </div>
-       <div class="col">
-      </div>
-    </div>
-  </div>
-  </thead>
 
-  
+<% @ideas.each do |idea| %>
 
-  <tbody>
-    <% @ideas.each do |idea| %>
-      <tr>
-        <td><%= idea.title %></td>
-        <td><%= idea.description %></td>
-        <td><%= idea.priority %></td>
-        <td><%= link_to 'Show', idea %></td>
-        <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-        <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-  <div class="card-header"><%= idea.title %></div>
-  <div class="card-body">
-    <h5 class="card-title">priority: <%= idea.priority %></h5>
-    <p class="card-text"><%= idea.description %></p>
-  </div>
-</div>
-    <% end %>
-  </tbody>
-</table>
+   <div class="row row-cols-3 row-cols-md-3">
+     <div class="col mb-4">
+       <div class="card h-100">
+         <!--Card image-->
+         <% if idea.priority == "high" %>
+           <div class=" card-header view overlay bg-danger" style="align-content: center; padding: 10px; color: #EFEFEF; ">
+
+         <% elsif idea.priority == "medium" %>
+           <div class=" card-header view overlay bg-warning" style="align-content: center; padding: 10px; color: #EFEFEF;">
+
+
+         <% elsif idea.priority == "low" %>
+           <div class=" card-header view overlay bg-success" style="align-content: center; padding: 10px; color: #EFEFEF;">
+
+         <% end %>
+         <span><%= idea.priority %></span>
+
+         </div>
+         <!--Card content-->
+         <div class="card-body">
+
+           <!--Title-->
+           <h4 class="card-title"><%= idea.title %></h4>
+           <!--Text-->
+           <p class="card-text"><%= idea.description %></p>
+           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+           <button type="button" class="btn btn-light-blue btn-md"><%= link_to 'Dump Idea',idea, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger "%></button>
+
+         </div>
+         <!-- Card -->
+         </div>
+       </div>
+     </div>
+     </div>
+   </div>
+
+
+<% end %>
+
+
 
 
